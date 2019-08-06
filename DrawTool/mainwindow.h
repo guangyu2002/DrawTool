@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class SBCanvas;
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    SBCanvas *m_pSBCanvas;
 };
 
 #endif // MAINWINDOW_H

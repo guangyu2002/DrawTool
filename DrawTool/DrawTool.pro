@@ -34,6 +34,10 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
+INCLUDEPATH += .\
+               ../SBShape
+LIBS += -L../buid/debug -lSBShape
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
