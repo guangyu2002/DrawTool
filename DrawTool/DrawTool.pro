@@ -36,7 +36,7 @@ FORMS += \
 
 INCLUDEPATH += .\
                ../SBShape
-LIBS += -L../buid/debug -lSBShape
+LIBS += -L../build/debug -lSBShape
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
