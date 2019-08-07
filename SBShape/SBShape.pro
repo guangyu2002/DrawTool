@@ -24,6 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         sbcanvas.cpp \
+        sbcreaterecteventholder.cpp \
+        sbdocument.cpp \
         sbediteventholder.cpp \
         sbeventholder.cpp \
         sbline.cpp \
@@ -31,6 +33,8 @@ SOURCES += \
 
 HEADERS += \
         sbcanvas.h \
+        sbcreaterecteventholder.h \
+        sbdocument.h \
         sbediteventholder.h \
         sbeventholder.h \
         sbline.h \

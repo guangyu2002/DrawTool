@@ -16,6 +16,15 @@ SBCanvas::~SBCanvas()
     m_pEventHolder = nullptr;
 }
 
+void SBCanvas::setEventHolder(SBEventHolder *eventHolder)
+{
+    if (m_pEventHolder != nullptr)
+    {
+        delete  m_pEventHolder;
+    }
+    m_pEventHolder = eventHolder;
+}
+
 void SBCanvas::mousePressEvent(QMouseEvent *event)
 {
     m_pEventHolder->mouseDownEvent(event);

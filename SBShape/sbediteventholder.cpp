@@ -25,17 +25,17 @@ void SBEditEventHolder::mouseDoubleClickEvent(QMouseEvent *e)
 
 }
 
-void SBEditEventHolder::keyDownEvent(QKeyEvent *e)
+void SBEditEventHolder::keyDownEvent(QKeyEvent *)
 {
 
 }
 
-void SBEditEventHolder::keyUpEvent(QKeyEvent *e)
+void SBEditEventHolder::keyUpEvent(QKeyEvent *)
 {
 
 }
 
-void SBEditEventHolder::paintEvent(QPaintEvent *e)
+void SBEditEventHolder::paintEvent(QPaintEvent *)
 {
 
 }

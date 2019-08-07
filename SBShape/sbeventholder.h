@@ -17,13 +17,13 @@ class SBSHAPESHARED_EXPORT SBEventHolder
 {
 public:
     SBEventHolder();
-    virtual void mouseDownEvent(QMouseEvent *e) = 0;
-    virtual void mouseMoveEvent(QMouseEvent *e) = 0;
-    virtual void mouseUpEvent(QMouseEvent *e) = 0;
-    virtual void mouseDoubleClickEvent(QMouseEvent *e) = 0;
-    virtual void keyDownEvent(QKeyEvent *e) = 0;
-    virtual void keyUpEvent(QKeyEvent *e) = 0;
-    virtual void paintEvent(QPaintEvent *e) = 0;
+    virtual void mouseDownEvent(QMouseEvent *);
+    virtual void mouseMoveEvent(QMouseEvent *);
+    virtual void mouseUpEvent(QMouseEvent *);
+    virtual void mouseDoubleClickEvent(QMouseEvent *);
+    virtual void keyDownEvent(QKeyEvent *);
+    virtual void keyUpEvent(QKeyEvent *);
+    virtual void paintEvent(QPaintEvent *);
 };
 
 #endif // SBEVENTHOLDER_H

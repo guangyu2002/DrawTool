@@ -4,3 +4,38 @@ SBEventHolder::SBEventHolder()
 {
 
 }
+
+void SBEventHolder::mouseDownEvent(QMouseEvent *)
+{
+
+}
+
+void SBEventHolder::mouseMoveEvent(QMouseEvent *)
+{
+
+}
+
+void SBEventHolder::mouseUpEvent(QMouseEvent *)
+{
+
+}
+
+void SBEventHolder::mouseDoubleClickEvent(QMouseEvent *)
+{
+
+}
+
+void SBEventHolder::keyDownEvent(QKeyEvent *)
+{
+
+}
+
+void SBEventHolder::keyUpEvent(QKeyEvent *)
+{
+
+}
+
+void SBEventHolder::paintEvent(QPaintEvent *)
+{
+
+}

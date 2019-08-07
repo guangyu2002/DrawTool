@@ -19,6 +19,8 @@ class SBSHAPESHARED_EXPORT SBCanvas : public QWidget
 public:
     explicit SBCanvas(QWidget *parent = nullptr);
     ~SBCanvas() override;
+    void setEventHolder(SBEventHolder *eventHolder);
+    inline SBEventHolder *eventHolder() const { return m_pEventHolder; }
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
