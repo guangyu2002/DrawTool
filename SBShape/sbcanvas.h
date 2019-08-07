@@ -9,6 +9,7 @@
 #define SBCANVAS_H
 
 #include "sbshape_global.h"
+#include "sbdocument.h"
 
 #include <QWidget>
 
@@ -20,7 +21,7 @@ public:
     explicit SBCanvas(QWidget *parent = nullptr);
     ~SBCanvas() override;
     void setEventHolder(SBEventHolder *eventHolder);
-    inline SBEventHolder *eventHolder() const { return m_pEventHolder; }
+    inline const SBEventHolder *eventHolder() const { return m_pEventHolder; }
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
@@ -36,6 +37,9 @@ public slots:
 
 private:
     SBEventHolder *m_pEventHolder;
+    SBDocument m_dSBDocument;
+    double m_dScaleGlobal_x;
+    double m_dScaleGlobal_y;
 };
 
 #endif // SBCANVAS_H

@@ -14,6 +14,7 @@ class SBSHAPESHARED_EXPORT SBLine : public SBShape
 {
 public:
     SBLine();
+    void draw(QPainter *p) override;
 };
 
 #endif // SBLINE_H

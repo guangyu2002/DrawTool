@@ -1,4 +1,4 @@
-#include "sbcreaterecteventholder.h"
+﻿#include "sbcreaterecteventholder.h"
 
 SBCreateRectEventHolder::SBCreateRectEventHolder()
 {

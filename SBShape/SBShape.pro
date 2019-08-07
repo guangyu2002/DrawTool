@@ -29,6 +29,7 @@ SOURCES += \
         sbediteventholder.cpp \
         sbeventholder.cpp \
         sbline.cpp \
+        sbrect.cpp \
         sbshape.cpp
 
 HEADERS += \
@@ -38,6 +39,7 @@ HEADERS += \
         sbediteventholder.h \
         sbeventholder.h \
         sbline.h \
+        sbrect.h \
         sbshape.h \
         sbshape_global.h 
 

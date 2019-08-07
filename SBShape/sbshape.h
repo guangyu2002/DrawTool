@@ -9,11 +9,15 @@
 #define SBSHAPE_H
 
 #include "sbshape_global.h"
+
+class QPainter;
 class SBSHAPESHARED_EXPORT SBShape
 {
 
 public:
     SBShape();
+
+    virtual void draw(QPainter *p) = 0;
 };
 
 #endif // SBSHAPE_H
