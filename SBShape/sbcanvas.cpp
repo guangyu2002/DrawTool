@@ -81,5 +81,5 @@ void SBCanvas::paintEvent(QPaintEvent *event)
         (*itor)->draw(&p);
         itor++;
     }
-    m_pEventHolder->paintEvent(event);
+    m_pEventHolder->paintEvent(p, event);
 }

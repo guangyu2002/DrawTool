@@ -10,13 +10,17 @@
 
 #include "sbeventholder.h"
 
+class SBRect;
 class SBSHAPESHARED_EXPORT SBCreateRectEventHolder : public SBEventHolder
 {
 public:
     SBCreateRectEventHolder();
-    void mouseDownEvent(QMouseEvent *e);
-    void mouseMoveEvent(QMouseEvent *e);
-    void mouseUpEvent(QMouseEvent *e);
+    void mouseDownEvent(QMouseEvent *e) override;
+    void mouseMoveEvent(QMouseEvent *e) override;
+    void mouseUpEvent(QMouseEvent *e) override;
+    void paintEvent(QPainter &, QPaintEvent *e) override;
+private:
+    SBRect *m_pSBRect;
 };
 
 #endif // SBCREATERECTEVENTHOLDER_H

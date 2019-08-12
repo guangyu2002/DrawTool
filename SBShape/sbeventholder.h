@@ -13,6 +13,7 @@
 class QMouseEvent;
 class QKeyEvent;
 class QPaintEvent;
+class QPainter;
 class SBSHAPESHARED_EXPORT SBEventHolder
 {
 public:
@@ -23,7 +24,7 @@ public:
     virtual void mouseDoubleClickEvent(QMouseEvent *);
     virtual void keyDownEvent(QKeyEvent *);
     virtual void keyUpEvent(QKeyEvent *);
-    virtual void paintEvent(QPaintEvent *);
+    virtual void paintEvent(QPainter &, QPaintEvent *);
 };
 
 #endif // SBEVENTHOLDER_H

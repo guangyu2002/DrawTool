@@ -35,7 +35,7 @@ void SBEditEventHolder::keyUpEvent(QKeyEvent *)
 
 }
 
-void SBEditEventHolder::paintEvent(QPaintEvent *)
+void SBEditEventHolder::paintEvent(QPainter &, QPaintEvent *)
 {
 
 }

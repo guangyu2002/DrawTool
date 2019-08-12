@@ -1,4 +1,4 @@
-#include "sbeventholder.h"
+﻿#include "sbeventholder.h"
 
 SBEventHolder::SBEventHolder()
 {
@@ -35,7 +35,7 @@ void SBEventHolder::keyUpEvent(QKeyEvent *)
 
 }
 
-void SBEventHolder::paintEvent(QPaintEvent *)
+void SBEventHolder::paintEvent(QPainter &, QPaintEvent *)
 {
 
 }

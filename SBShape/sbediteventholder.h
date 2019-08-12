@@ -20,7 +20,7 @@ public:
     void mouseDoubleClickEvent(QMouseEvent *e) override;
     void keyDownEvent(QKeyEvent *e) override;
     void keyUpEvent(QKeyEvent *e) override;
-    void paintEvent(QPaintEvent *e) override;
+    void paintEvent(QPainter &, QPaintEvent *e) override;
 };
 
 #endif // SBEDITEVENTHOLDER_H
