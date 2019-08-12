@@ -5,7 +5,7 @@ SBLine::SBLine()
 
 }
 
-void SBLine::draw(QPainter *p)
+void SBLine::draw(QPainter &p)
 {
 
 }

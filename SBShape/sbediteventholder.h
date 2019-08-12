@@ -13,7 +13,7 @@
 class SBSHAPESHARED_EXPORT SBEditEventHolder : public SBEventHolder
 {
 public:
-    SBEditEventHolder();
+    SBEditEventHolder(SBCanvas *canvas);
     void mouseDownEvent(QMouseEvent *e) override;
     void mouseMoveEvent(QMouseEvent *e) override;
     void mouseUpEvent(QMouseEvent *e) override;

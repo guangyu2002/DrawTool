@@ -12,7 +12,7 @@ SBCanvas::SBCanvas(QWidget *parent) :
 {
     setMouseTracking(true);//开始鼠标move事件捕捉能力
     setFocusPolicy(Qt::StrongFocus);//开启键盘事件捕捉能力
-    m_pEventHolder = new SBEditEventHolder();
+    m_pEventHolder = new SBEditEventHolder(this);
 }
 
 SBCanvas::~SBCanvas()
@@ -78,7 +78,7 @@ void SBCanvas::paintEvent(QPaintEvent *event)
     QList<SBShape*>::iterator itorEnd = m_dSBDocument.shapeList().end();
     while (itor != itorEnd)
     {
-        (*itor)->draw(&p);
+        (*itor)->draw(p);
         itor++;
     }
     m_pEventHolder->paintEvent(p, event);

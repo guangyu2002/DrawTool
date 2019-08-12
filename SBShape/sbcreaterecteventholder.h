@@ -14,11 +14,12 @@ class SBRect;
 class SBSHAPESHARED_EXPORT SBCreateRectEventHolder : public SBEventHolder
 {
 public:
-    SBCreateRectEventHolder();
+    SBCreateRectEventHolder(SBCanvas *canvas);
+    ~SBCreateRectEventHolder() override;
     void mouseDownEvent(QMouseEvent *e) override;
     void mouseMoveEvent(QMouseEvent *e) override;
     void mouseUpEvent(QMouseEvent *e) override;
-    void paintEvent(QPainter &, QPaintEvent *e) override;
+    void paintEvent(QPainter &p, QPaintEvent *e) override;
 private:
     SBRect *m_pSBRect;
 };

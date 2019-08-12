@@ -24,7 +24,7 @@ void MainWindow::on_actionLine_triggered(bool)
 
 void MainWindow::on_actionRect_triggered(bool)
 {
-    SBCreateRectEventHolder *eventHolder = new SBCreateRectEventHolder();
+    SBCreateRectEventHolder *eventHolder = new SBCreateRectEventHolder(m_pSBCanvas);
     m_pSBCanvas->setEventHolder(eventHolder);
 }
 

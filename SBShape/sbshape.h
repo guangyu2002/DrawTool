@@ -17,7 +17,8 @@ class SBSHAPESHARED_EXPORT SBShape
 public:
     SBShape();
 
-    virtual void draw(QPainter *p) = 0;
+    virtual void draw(QPainter &p) = 0;
+    virtual void reDraw();
 };
 
 #endif // SBSHAPE_H

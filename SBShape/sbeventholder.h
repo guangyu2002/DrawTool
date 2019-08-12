@@ -14,10 +14,12 @@ class QMouseEvent;
 class QKeyEvent;
 class QPaintEvent;
 class QPainter;
+class SBCanvas;
 class SBSHAPESHARED_EXPORT SBEventHolder
 {
 public:
-    SBEventHolder();
+    SBEventHolder(SBCanvas *canvas);
+    virtual ~SBEventHolder();
     virtual void mouseDownEvent(QMouseEvent *);
     virtual void mouseMoveEvent(QMouseEvent *);
     virtual void mouseUpEvent(QMouseEvent *);
@@ -25,6 +27,8 @@ public:
     virtual void keyDownEvent(QKeyEvent *);
     virtual void keyUpEvent(QKeyEvent *);
     virtual void paintEvent(QPainter &, QPaintEvent *);
+protected:
+    SBCanvas *m_pCurrentCanvas;//由外部传入，不需要此类delete
 };
 
 #endif // SBEVENTHOLDER_H

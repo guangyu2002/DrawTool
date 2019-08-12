@@ -1,6 +1,7 @@
 ﻿#include "sbediteventholder.h"
 
-SBEditEventHolder::SBEditEventHolder()
+SBEditEventHolder::SBEditEventHolder(SBCanvas *canvas) :
+    SBEventHolder(canvas)
 {
 
 }
