@@ -10,11 +10,12 @@
 
 #include "sbshape_global.h"
 #include "sbdocument.h"
+#include "sbicanvas.h"
 
 #include <QWidget>
 
 class SBEventHolder;
-class SBSHAPESHARED_EXPORT SBCanvas : public QWidget
+class SBSHAPESHARED_EXPORT SBCanvas : public QWidget, public SBICanvas
 {
     Q_OBJECT
 public:
@@ -22,6 +23,7 @@ public:
     ~SBCanvas() override;
     void setEventHolder(SBEventHolder *eventHolder);
     inline const SBEventHolder *eventHolder() const { return m_pEventHolder; }
+    inline void reDraw(const QRect &rect) override { update(rect); }
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;

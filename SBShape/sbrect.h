@@ -8,11 +8,11 @@
 #ifndef SBRECT_H
 #define SBRECT_H
 
-#include "sbshape.h"
+#include "sbsimpleshape.h"
 
 #include <QPoint>
 
-class SBSHAPESHARED_EXPORT SBRect : public SBShape
+class SBSHAPESHARED_EXPORT SBRect : public SBSimpleShape
 {
 public:
     SBRect();
@@ -27,8 +27,9 @@ public:
     void setWidth(const int width);
     int height() const;
     void setHeight(const int height);
+    QRect rect() const override;
 
-private:
+protected:
     QPoint m_dBegin;
     QPoint m_dEnd;
 };

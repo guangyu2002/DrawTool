@@ -24,6 +24,7 @@ void SBCreateRectEventHolder::mouseDownEvent(QMouseEvent *e)
     if (e->button() == Qt::LeftButton) //开始创建矩形图元
     {
         m_pSBRect = new SBRect();
+        m_pSBRect->setCanvas(m_pCurrentCanvas);
         m_pSBRect->setBegin(e->pos());
     }
 }
@@ -35,7 +36,7 @@ void SBCreateRectEventHolder::mouseMoveEvent(QMouseEvent *e)
         if (m_pSBRect != nullptr)
         {
             m_pSBRect->setEnd(e->pos());
-            m_pCurrentCanvas->update(m_pSBRect->begin().x(),m_pSBRect->begin().y(),m_pSBRect->width(),m_pSBRect->height());
+            m_pSBRect->reDraw();
         }
     }
 }

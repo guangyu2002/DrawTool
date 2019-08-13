@@ -28,7 +28,7 @@ public:
     virtual void keyUpEvent(QKeyEvent *);
     virtual void paintEvent(QPainter &, QPaintEvent *);
 protected:
-    SBCanvas *m_pCurrentCanvas;//由外部传入，不需要此类delete
+    SBCanvas *m_pCurrentCanvas;
 };
 
 #endif // SBEVENTHOLDER_H

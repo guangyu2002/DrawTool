@@ -10,7 +10,10 @@
 
 #include "sbshape_global.h"
 
+class QRect;
 class QPainter;
+class SBICanvas;
+class SBDocument;
 class SBSHAPESHARED_EXPORT SBShape
 {
 
@@ -19,6 +22,15 @@ public:
 
     virtual void draw(QPainter &p) = 0;
     virtual void reDraw();
+    virtual QRect rect() const = 0;
+    inline SBDocument *document() const { return m_pDocument; }
+    inline void setDocument(SBDocument *doc) { m_pDocument = doc; }
+    inline SBICanvas *canvas() const { return m_pCanvas; }
+    inline void setCanvas(SBICanvas *canvas) { m_pCanvas = canvas; }
+
+private:
+    SBICanvas *m_pCanvas;
+    SBDocument *m_pDocument;
 };
 
 #endif // SBSHAPE_H

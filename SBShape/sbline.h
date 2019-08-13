@@ -8,13 +8,19 @@
 #ifndef SBLINE_H
 #define SBLINE_H
 
-#include "sbshape.h"
+#include "sbsimpleshape.h"
 
-class SBSHAPESHARED_EXPORT SBLine : public SBShape
+#include <QPoint>
+
+class SBSHAPESHARED_EXPORT SBLine : public SBSimpleShape
 {
 public:
     SBLine();
     void draw(QPainter &p) override;
+    QRect rect() const override;
+private:
+    QPoint m_dBegin;
+    QPoint m_dEnd;
 };
 
 #endif // SBLINE_H

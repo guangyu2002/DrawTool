@@ -28,9 +28,11 @@ SOURCES += \
         sbdocument.cpp \
         sbediteventholder.cpp \
         sbeventholder.cpp \
+        sbicanvas.cpp \
         sbline.cpp \
         sbrect.cpp \
-        sbshape.cpp
+        sbshape.cpp \
+        sbsimpleshape.cpp
 
 HEADERS += \
         sbcanvas.h \
@@ -38,10 +40,12 @@ HEADERS += \
         sbdocument.h \
         sbediteventholder.h \
         sbeventholder.h \
+        sbicanvas.h \
         sbline.h \
         sbrect.h \
         sbshape.h \
-        sbshape_global.h 
+        sbshape_global.h  \
+        sbsimpleshape.h
 
 unix {
     target.path = /usr/lib
