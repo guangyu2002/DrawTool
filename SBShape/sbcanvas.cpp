@@ -1,18 +1,19 @@
 ﻿#include "sbcanvas.h"
 #include "sbediteventholder.h"
 #include "sbshape.h"
+#include "sbdocument.h"
 
 #include <QPainter>
 
 SBCanvas::SBCanvas(QWidget *parent) :
     QWidget(parent),
-    m_dSBDocument(),
     m_dScaleGlobal_x(1),
     m_dScaleGlobal_y(1)
 {
     setMouseTracking(true);//开始鼠标move事件捕捉能力
     setFocusPolicy(Qt::StrongFocus);//开启键盘事件捕捉能力
     m_pEventHolder = new SBEditEventHolder(this);
+    m_pSBDocument = new SBDocument();
 }
 
 SBCanvas::~SBCanvas()
@@ -22,6 +23,11 @@ SBCanvas::~SBCanvas()
         delete m_pEventHolder;
     }
     m_pEventHolder = nullptr;
+    if (m_pSBDocument != nullptr)
+    {
+        delete m_pSBDocument;
+    }
+    m_pSBDocument = nullptr;
 }
 
 void SBCanvas::setEventHolder(SBEventHolder *eventHolder)
@@ -74,8 +80,8 @@ void SBCanvas::paintEvent(QPaintEvent *event)
     p.setRenderHints(QPainter::Antialiasing);//反走样抗锯齿
     p.scale(m_dScaleGlobal_x, m_dScaleGlobal_y);//画布全局缩放
     //p.translate(x, y);//画布全局移动
-    QList<SBShape*>::iterator itor = m_dSBDocument.shapeList().begin();
-    QList<SBShape*>::iterator itorEnd = m_dSBDocument.shapeList().end();
+    QList<SBShape*>::iterator itor = m_pSBDocument->shapeList().begin();
+    QList<SBShape*>::iterator itorEnd = m_pSBDocument->shapeList().end();
     while (itor != itorEnd)
     {
         (*itor)->draw(p);

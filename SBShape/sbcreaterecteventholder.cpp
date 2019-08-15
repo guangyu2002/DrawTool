@@ -2,6 +2,7 @@
 #include "sbrect.h"
 #include <QMouseEvent>
 #include "sbcanvas.h"
+#include <QDebug>
 
 SBCreateRectEventHolder::SBCreateRectEventHolder(SBCanvas *canvas) :
     SBEventHolder(canvas),
@@ -35,8 +36,15 @@ void SBCreateRectEventHolder::mouseMoveEvent(QMouseEvent *e)
     {
         if (m_pSBRect != nullptr)
         {
+            QRect oldRect = m_pSBRect->rect();
+            qDebug() << "oldRect" << oldRect;
             m_pSBRect->setEnd(e->pos());
-            m_pSBRect->reDraw();
+            //m_pSBRect->reDraw();
+            QRect newRect = m_pSBRect->rect();
+            qDebug() << "newRect" << newRect;
+            m_pCurrentCanvas->update(oldRect);
+            m_pCurrentCanvas->update(newRect);
+            //m_pCurrentCanvas->update();
         }
     }
 }

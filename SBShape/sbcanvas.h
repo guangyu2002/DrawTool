@@ -9,12 +9,12 @@
 #define SBCANVAS_H
 
 #include "sbshape_global.h"
-#include "sbdocument.h"
 #include "sbicanvas.h"
 
 #include <QWidget>
 
 class SBEventHolder;
+class SBDocument;
 class SBSHAPESHARED_EXPORT SBCanvas : public QWidget, public SBICanvas
 {
     Q_OBJECT
@@ -39,7 +39,7 @@ public slots:
 
 private:
     SBEventHolder *m_pEventHolder;
-    SBDocument m_dSBDocument;
+    SBDocument *m_pSBDocument;
     double m_dScaleGlobal_x;
     double m_dScaleGlobal_y;
 };

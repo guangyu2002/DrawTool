@@ -8,12 +8,13 @@ SBRect::SBRect() : SBSimpleShape()
 
 void SBRect::draw(QPainter &p)
 {
-    QBrush brush(m_dBrushColor);
-    p.fillRect(rect(), brush);
+
     QPen pen(m_dPenColor);
     pen.setWidth(m_dStrokeWidth);
     p.setPen(pen);
     p.drawRect(rect());
+    QBrush brush(m_dBrushColor);
+    p.fillRect(rect(), brush);
 }
 
 int SBRect::width() const
@@ -38,5 +39,6 @@ void SBRect::setHeight(const int height)
 
 QRect SBRect::rect() const
 {
-    return QRect(m_dBegin, m_dEnd);
+    return  QRect(m_dBegin.x() - m_dStrokeWidth / 2, m_dBegin.y() - m_dStrokeWidth / 2, m_dEnd.x() - m_dBegin.x() + m_dStrokeWidth,m_dEnd.y() - m_dBegin.y() + m_dStrokeWidth);
+    //return QRect(m_dBegin, m_dEnd);
 }

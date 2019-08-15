@@ -1,7 +1,7 @@
 ﻿#include "sbsimpleshape.h"
 
 SBSimpleShape::SBSimpleShape() :
-    m_dStrokeWidth(1),
+    m_dStrokeWidth(20),
     m_dPenColor(Qt::red),
     m_dBrushColor(Qt::blue)
 {
