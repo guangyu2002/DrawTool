@@ -27,7 +27,8 @@ public:
     void setWidth(const int width);
     int height() const;
     void setHeight(const int height);
-    QRect rect() const override;
+    QRect rectBox() const override;
+    QRect dispBox() const override;
 
 protected:
     QPoint m_dBegin;

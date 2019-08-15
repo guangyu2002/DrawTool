@@ -22,7 +22,9 @@ public:
 
     virtual void draw(QPainter &p) = 0;
     virtual void reDraw();
-    virtual QRect rect() const = 0;
+    virtual void reDraw(QRect &rect);
+    virtual QRect rectBox() const = 0;
+    virtual QRect dispBox() const = 0;
     inline SBDocument *document() const { return m_pDocument; }
     inline void setDocument(SBDocument *doc) { m_pDocument = doc; }
     inline SBICanvas *canvas() const { return m_pCanvas; }

@@ -27,6 +27,7 @@ void SBCreateRectEventHolder::mouseDownEvent(QMouseEvent *e)
         m_pSBRect = new SBRect();
         m_pSBRect->setCanvas(m_pCurrentCanvas);
         m_pSBRect->setBegin(e->pos());
+        m_pSBRect->setEnd(e->pos());
     }
 }
 
@@ -36,14 +37,9 @@ void SBCreateRectEventHolder::mouseMoveEvent(QMouseEvent *e)
     {
         if (m_pSBRect != nullptr)
         {
-            QRect oldRect = m_pSBRect->rect();
-            qDebug() << "oldRect" << oldRect;
+            QRect oldRect = m_pSBRect->dispBox();
             m_pSBRect->setEnd(e->pos());
-            //m_pSBRect->reDraw();
-            QRect newRect = m_pSBRect->rect();
-            qDebug() << "newRect" << newRect;
-            m_pCurrentCanvas->update(oldRect);
-            m_pCurrentCanvas->update(newRect);
+            m_pSBRect->reDraw(oldRect);
             //m_pCurrentCanvas->update();
         }
     }

@@ -10,6 +10,15 @@ void SBShape::reDraw()
 {
     if (m_pCanvas != nullptr)
     {
-        m_pCanvas->reDraw(rect());
+        m_pCanvas->reDraw(dispBox());
+    }
+}
+
+void SBShape::reDraw(QRect &rect)
+{
+    if (m_pCanvas != nullptr)
+    {
+        m_pCanvas->reDraw(rect);
+        m_pCanvas->reDraw(dispBox());
     }
 }

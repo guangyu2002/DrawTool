@@ -17,7 +17,8 @@ class SBSHAPESHARED_EXPORT SBLine : public SBSimpleShape
 public:
     SBLine();
     void draw(QPainter &p) override;
-    QRect rect() const override;
+    QRect rectBox() const override;
+    QRect dispBox() const override;
 private:
     QPoint m_dBegin;
     QPoint m_dEnd;

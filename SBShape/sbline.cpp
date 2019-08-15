@@ -12,7 +12,12 @@ void SBLine::draw(QPainter &p)
 
 }
 
-QRect SBLine::rect() const
+QRect SBLine::dispBox() const
+{
+    return QRect();
+}
+
+QRect SBLine::rectBox() const
 {
     return QRect();
 }
