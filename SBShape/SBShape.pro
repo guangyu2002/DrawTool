@@ -31,6 +31,7 @@ SOURCES += \
         sbediteventholder.cpp \
         sbeventholder.cpp \
         sbicanvas.cpp \
+        sbifileio.cpp \
         sbline.cpp \
         sbrect.cpp \
         sbshape.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
         sbediteventholder.h \
         sbeventholder.h \
         sbicanvas.h \
+        sbifileio.h \
         sbline.h \
         sbrect.h \
         sbshape.h \

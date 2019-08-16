@@ -1,8 +1,11 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "sbcanvas.h"
 #include "sbcreaterecteventholder.h"
 #include "sbcreatelineeventholder.h"
+
+#include "svgtranslation.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

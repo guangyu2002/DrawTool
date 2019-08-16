@@ -3,9 +3,6 @@
 # Project created by QtCreator 2019-08-16T15:21:13
 #
 #-------------------------------------------------
-
-QT       += svg
-
 QT       -= gui
 
 TARGET = SVGTranslation
@@ -35,3 +32,10 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShape
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShaped
+else:unix: LIBS += -L$$PWD/../build/debug/ -lSBShape
+
+INCLUDEPATH += $$PWD/../SBShape
+DEPENDPATH += $$PWD/../SBShape
