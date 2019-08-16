@@ -34,11 +34,21 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += .\
-               ../SBShape
-LIBS += -L../build/debug -lSBShape
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSVGTranslation
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSVGTranslationd
+else:unix: LIBS += -L$$PWD/../build/debug/ -lSVGTranslation
+
+INCLUDEPATH += $$PWD/../SVGTranslation
+DEPENDPATH += $$PWD/../SVGTranslation
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShape
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShaped
+else:unix: LIBS += -L$$PWD/../build/debug/ -lSBShape
+
+INCLUDEPATH += $$PWD/../SBShape
+DEPENDPATH += $$PWD/../SBShape
