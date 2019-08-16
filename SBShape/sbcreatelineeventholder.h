@@ -1,22 +1,22 @@
 ﻿/**********************************************
- * 创建时间：2019.08.07
+ * 创建时间：2019.08.06
  * 作者：guangyu
- * 说明：矩形创建事件处理器
+ * 说明：直线创建事件处理器
  * 修改记录：
 ***********************************************/
 
-#ifndef SBCREATERECTEVENTHOLDER_H
-#define SBCREATERECTEVENTHOLDER_H
+#ifndef SBCREATELINEEVENTHOLDER_H
+#define SBCREATELINEEVENTHOLDER_H
 
 #include "sbcreatebaseeventholder.h"
 
-class SBSHAPESHARED_EXPORT SBCreateRectEventHolder : public SBCreateBaseEventHolder
+class SBSHAPESHARED_EXPORT SBCreateLineEventHolder : public SBCreateBaseEventHolder
 {
 public:
-    SBCreateRectEventHolder(SBICanvas *canvas);
+    SBCreateLineEventHolder(SBICanvas *canvas);
     void mouseDownEvent(QMouseEvent *e) override;
     void mouseMoveEvent(QMouseEvent *e) override;
     void mouseUpEvent(QMouseEvent *e) override;
 };
 
-#endif // SBCREATERECTEVENTHOLDER_H
+#endif // SBCREATELINEEVENTHOLDER_H

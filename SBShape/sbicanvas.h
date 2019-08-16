@@ -8,13 +8,17 @@
 #ifndef SBICANVAS_H
 #define SBICANVAS_H
 
+#include "sbshape_global.h"
+
 class QRect;
-class SBICanvas
+class SBDocument;
+class SBSHAPESHARED_EXPORT SBICanvas
 {
 public:
     SBICanvas();
-
+    virtual SBDocument *doc() const = 0;
     virtual void reDraw(const QRect &rect) = 0;
+    virtual void eventHolderEnd();
 };
 
 #endif // SBICANVAS_H

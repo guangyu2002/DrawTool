@@ -19,7 +19,7 @@ class SBSHAPESHARED_EXPORT SBShape
 
 public:
     SBShape();
-
+    virtual ~SBShape();
     virtual void draw(QPainter &p) = 0;
     virtual void reDraw();
     virtual void reDraw(QRect &rect);

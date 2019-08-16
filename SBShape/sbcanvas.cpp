@@ -14,6 +14,7 @@ SBCanvas::SBCanvas(QWidget *parent) :
     setFocusPolicy(Qt::StrongFocus);//开启键盘事件捕捉能力
     m_pEventHolder = new SBEditEventHolder(this);
     m_pSBDocument = new SBDocument();
+    m_pSBDocument->setCanvas(this);
 }
 
 SBCanvas::~SBCanvas()
@@ -37,6 +38,12 @@ void SBCanvas::setEventHolder(SBEventHolder *eventHolder)
         delete  m_pEventHolder;
     }
     m_pEventHolder = eventHolder;
+}
+
+void SBCanvas::eventHolderEnd()
+{
+    SBEventHolder *eventHolder = new SBEditEventHolder(this);
+    setEventHolder(eventHolder);
 }
 
 void SBCanvas::mousePressEvent(QMouseEvent *event)

@@ -1,33 +1,25 @@
 ﻿#include "sbcreaterecteventholder.h"
 #include "sbrect.h"
+#include "sbicanvas.h"
+#include "sbdocument.h"
+
 #include <QMouseEvent>
-#include "sbcanvas.h"
-#include <QDebug>
 
-SBCreateRectEventHolder::SBCreateRectEventHolder(SBCanvas *canvas) :
-    SBEventHolder(canvas),
-    m_pSBRect()
+SBCreateRectEventHolder::SBCreateRectEventHolder(SBICanvas *canvas) :
+    SBCreateBaseEventHolder(canvas)
 {
 
-}
-
-SBCreateRectEventHolder::~SBCreateRectEventHolder()
-{
-    if (m_pSBRect != nullptr)
-    {
-        delete m_pSBRect;
-    }
-    m_pSBRect = nullptr;
 }
 
 void SBCreateRectEventHolder::mouseDownEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::LeftButton) //开始创建矩形图元
     {
-        m_pSBRect = new SBRect();
-        m_pSBRect->setCanvas(m_pCurrentCanvas);
-        m_pSBRect->setBegin(e->pos());
-        m_pSBRect->setEnd(e->pos());
+        SBRect *rect = new SBRect();
+        rect->setCanvas(m_pCurrentCanvas);
+        rect->setBegin(e->pos());
+        rect->setEnd(e->pos());
+        m_pShape = rect;
     }
 }
 
@@ -35,25 +27,20 @@ void SBCreateRectEventHolder::mouseMoveEvent(QMouseEvent *e)
 {
     if (e->buttons() == Qt::LeftButton)
     {
-        if (m_pSBRect != nullptr)
+        if (m_pShape != nullptr)
         {
-            QRect oldRect = m_pSBRect->dispBox();
-            m_pSBRect->setEnd(e->pos());
-            m_pSBRect->reDraw(oldRect);
-            //m_pCurrentCanvas->update();
+            SBRect *rect = dynamic_cast<SBRect*>(m_pShape);
+            QRect oldRect = rect->dispBox();
+            rect->setEnd(e->pos());
+            rect->reDraw(oldRect);
         }
     }
 }
 
 void SBCreateRectEventHolder::mouseUpEvent(QMouseEvent *e)
 {
-
-}
-
-void SBCreateRectEventHolder::paintEvent(QPainter &p, QPaintEvent *e)
-{
-    if (m_pSBRect != nullptr)
+    if (e->button() == Qt::LeftButton)
     {
-        m_pSBRect->draw(p);
+        createEnd();
     }
 }

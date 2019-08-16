@@ -1,6 +1,6 @@
 ﻿#include "sbeventholder.h"
 
-SBEventHolder::SBEventHolder(SBCanvas *canvas) :
+SBEventHolder::SBEventHolder(SBICanvas *canvas) :
     m_pCurrentCanvas(canvas)
 {
 

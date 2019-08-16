@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "sbcanvas.h"
 #include "sbcreaterecteventholder.h"
+#include "sbcreatelineeventholder.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,7 +20,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionLine_triggered(bool)
 {
-
+    SBCreateLineEventHolder *eventHolder = new SBCreateLineEventHolder(m_pSBCanvas);
+    m_pSBCanvas->setEventHolder(eventHolder);
 }
 
 void MainWindow::on_actionRect_triggered(bool)

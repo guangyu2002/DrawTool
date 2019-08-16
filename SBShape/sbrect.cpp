@@ -35,10 +35,13 @@ void SBRect::setHeight(const int height)
 {
     m_dEnd.setY(m_dBegin.y() + height);
 }
-
+/*********************************************************************
+ * 元件刷新区域，元件实际的绘制区域是rectBox的基础上加上膨胀值m_dStrokeWidth / 2
+ * 此处使用膨胀值m_dStrokeWidth，是为了在创建矩形时鼠标移动不会造成矩形边缘闪烁
+*********************************************************************/
 QRect SBRect::dispBox() const
 {
-    return QRect(m_dBegin.x() - m_dStrokeWidth / 2, m_dBegin.y() - m_dStrokeWidth / 2, width() + m_dStrokeWidth + 1, height() + m_dStrokeWidth + 1);
+    return QRect(m_dBegin.x() - m_dStrokeWidth, m_dBegin.y() - m_dStrokeWidth, width() + m_dStrokeWidth * 2, height() + m_dStrokeWidth * 2);
 }
 
 QRect SBRect::rectBox() const

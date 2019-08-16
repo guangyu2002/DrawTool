@@ -6,6 +6,11 @@ SBShape::SBShape()
 {
 }
 
+SBShape::~SBShape()
+{
+
+}
+
 void SBShape::reDraw()
 {
     if (m_pCanvas != nullptr)

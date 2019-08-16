@@ -22,7 +22,9 @@ public:
     explicit SBCanvas(QWidget *parent = nullptr);
     ~SBCanvas() override;
     void setEventHolder(SBEventHolder *eventHolder);
+    void eventHolderEnd() override;
     inline const SBEventHolder *eventHolder() const { return m_pEventHolder; }
+    inline SBDocument *doc() const override { return m_pSBDocument; }
     inline void reDraw(const QRect &rect) override { update(rect); }
 protected:
     void mousePressEvent(QMouseEvent *event) override;

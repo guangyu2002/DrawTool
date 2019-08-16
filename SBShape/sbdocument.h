@@ -14,15 +14,20 @@
 
 
 class SBShape;
+class SBICanvas;
 class SBSHAPESHARED_EXPORT SBDocument
 {
 public:
     SBDocument();
+    ~SBDocument();
+    void addShape(SBShape *shape);
 
     inline QList<SBShape*> &shapeList() { return  m_listShapes; }
+    inline void setCanvas(SBICanvas *canvas) { m_pCanvas = canvas; }
 
 private:
     QList<SBShape*> m_listShapes;
+    SBICanvas *m_pCanvas;
 };
 
 #endif // SBDOCUMENT_H
