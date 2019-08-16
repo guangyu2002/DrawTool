@@ -5,7 +5,10 @@
 #-------------------------------------------------
 QT       -= gui
 
-TARGET = SVGTranslation
+win32:CONFIG(release, debug|release): TARGET = SVGTranslation
+else:win32:CONFIG(debug, debug|release): TARGET = SVGTranslationd
+else:unix: TARGET = SVGTranslation
+
 TEMPLATE = lib
 
 DEFINES += SVGTRANSLATION_LIBRARY
@@ -33,9 +36,9 @@ unix {
     INSTALLS += target
 }
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShape
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/release/ -lSBShape
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShaped
-else:unix: LIBS += -L$$PWD/../build/debug/ -lSBShape
+else:unix: LIBS += -L$$PWD/../build/ -lSBShape
 
 INCLUDEPATH += $$PWD/../SBShape
 DEPENDPATH += $$PWD/../SBShape

@@ -8,7 +8,10 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = DrawTool
+win32:CONFIG(release, debug|release): TARGET = DrawTool
+else:win32:CONFIG(debug, debug|release): TARGET = DrawToold
+else:unix: TARGET = DrawTool
+
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -39,14 +42,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSVGTranslation
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/release/ -lSVGTranslation
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSVGTranslationd
 else:unix: LIBS += -L$$PWD/../build/debug/ -lSVGTranslation
 
 INCLUDEPATH += $$PWD/../SVGTranslation
 DEPENDPATH += $$PWD/../SVGTranslation
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShape
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/release/ -lSBShape
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShaped
 else:unix: LIBS += -L$$PWD/../build/debug/ -lSBShape
 

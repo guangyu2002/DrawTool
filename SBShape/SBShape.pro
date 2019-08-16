@@ -6,7 +6,10 @@
 
 QT       += widgets
 
-TARGET = SBShape
+win32:CONFIG(release, debug|release): TARGET = SBShape
+else:win32:CONFIG(debug, debug|release): TARGET = SBShaped
+else:unix: TARGET = SBShape
+
 TEMPLATE = lib
 
 DEFINES += SBSHAPE_LIBRARY
