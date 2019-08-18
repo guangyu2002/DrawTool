@@ -16,17 +16,23 @@ class SBSHAPESHARED_EXPORT SBLine : public SBSimpleShape
 {
 public:
     SBLine();
-    void draw(QPainter &p) Q_DECL_OVERRIDE;
-    QRect rectBox() const Q_DECL_OVERRIDE;
-    QRect dispBox() const Q_DECL_OVERRIDE;
     inline QPoint Begin() const { return m_dBegin; }
     inline void setBegin(const QPoint &begin) { m_dBegin = begin; }
     inline QPoint End() const { return m_dEnd; }
     inline void setEnd(const QPoint &end) { m_dEnd = end; }
 
+    // SBShape interface
+public:
+    QString typeName() const Q_DECL_OVERRIDE;
+    void draw(QPainter &p) Q_DECL_OVERRIDE;
+    QRect rectBox() const Q_DECL_OVERRIDE;
+    QRect dispBox() const Q_DECL_OVERRIDE;
+
 private:
     QPoint m_dBegin;
     QPoint m_dEnd;
+
+
 };
 
 #endif // SBLINE_H

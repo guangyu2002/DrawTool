@@ -27,3 +27,8 @@ void SBShape::reDraw(QRect &rect)
         m_pCanvas->reDraw(dispBox());
     }
 }
+
+QString SBShape::typeName()
+{
+    return "Shape";
+}

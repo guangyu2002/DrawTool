@@ -26,12 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         svgexportio.cpp \
-        svgfileio.cpp
+        svgfileio.cpp \
+        svgtranlationbase.cpp \
+        svgtranslatormanager.cpp
 
 HEADERS += \
         svgexportio.h \
         svgfileio.h \
-        svgtranslation_global.h 
+        svgtranlationbase.h \
+        svgtranslation_global.h  \
+        svgtranslatormanager.h
 
 unix {
     target.path = /usr/lib

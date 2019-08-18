@@ -16,7 +16,7 @@ public:
     SBCreateRectEventHolder(SBICanvas *canvas);
     void mouseDownEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
     void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
-    void mouseUpEvent(QMouseEvent *e) override;
+    void mouseUpEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 };
 
 #endif // SBCREATERECTEVENTHOLDER_H

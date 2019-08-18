@@ -43,12 +43,12 @@ QString SBFileIOManager::saveFile(QString &fileName, SBDocument *doc)
     }
     if (fileIO == nullptr)
     {
-        return "Unable to find the specified IFileIO";
+        return QObject::tr("Unable to find the specified IFileIO");
     }
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
-        return "Failed to save file";
+        return QObject::tr("Failed to save file");
     }
     QByteArray buff;
     QString info = fileIO->exportFile(buff, doc);

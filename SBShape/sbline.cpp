@@ -7,6 +7,11 @@ SBLine::SBLine()
 
 }
 
+QString SBLine::typeName()
+{
+    return "line";
+}
+
 void SBLine::draw(QPainter &p)
 {
     QPen pen(m_dPenColor);

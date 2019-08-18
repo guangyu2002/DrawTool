@@ -9,8 +9,6 @@
 #define SVGFILEIO_H
 
 #include "svgtranslation_global.h"
-
-
 #include "sbifileio.h"
 
 class SVGTRANSLATIONSHARED_EXPORT SVGFileIO : public SBIFileIO
@@ -21,7 +19,7 @@ public:
 
     // SBIFileIO interface
 public:
-    QString exportFile(QByteArray &buff, const SBDocument *doc) const Q_DECL_OVERRIDE;
+    QString exportFile(QByteArray &buff, SBDocument *doc) const Q_DECL_OVERRIDE;
     inline QString fileType() Q_DECL_OVERRIDE { return "svg"; }
 };
 

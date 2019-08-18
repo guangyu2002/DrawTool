@@ -18,7 +18,7 @@ class SBSHAPESHARED_EXPORT SBIFileIO
 public:
     SBIFileIO();
     virtual QString fileType() = 0;
-    virtual QString exportFile(QByteArray &buff, const SBDocument *doc) const = 0;
+    virtual QString exportFile(QByteArray &buff, SBDocument *doc) const = 0;
 };
 
 #endif // SBIFILEIO_H

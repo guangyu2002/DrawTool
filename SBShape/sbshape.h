@@ -10,6 +10,8 @@
 
 #include "sbshape_global.h"
 
+#include <QString>
+
 class QRect;
 class QPainter;
 class SBICanvas;
@@ -25,6 +27,7 @@ public:
     virtual void reDraw(QRect &rect);
     virtual QRect rectBox() const = 0;
     virtual QRect dispBox() const = 0;
+    virtual QString typeName() const;
     inline SBDocument *document() const { return m_pDocument; }
     inline void setDocument(SBDocument *doc) { m_pDocument = doc; }
     inline SBICanvas *canvas() const { return m_pCanvas; }
