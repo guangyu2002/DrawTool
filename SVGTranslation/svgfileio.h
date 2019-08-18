@@ -5,8 +5,8 @@
  * 修改记录：
 ***********************************************/
 
-#ifndef SVGTRANSLATION_H
-#define SVGTRANSLATION_H
+#ifndef SVGFILEIO_H
+#define SVGFILEIO_H
 
 #include "svgtranslation_global.h"
 
@@ -21,8 +21,8 @@ public:
 
     // SBIFileIO interface
 public:
-    QString exportFile(const char *fileName, const SBDocument *doc) const Q_DECL_OVERRIDE;
+    QString exportFile(QByteArray &buff, const SBDocument *doc) const Q_DECL_OVERRIDE;
     inline QString fileType() Q_DECL_OVERRIDE { return "svg"; }
 };
 
-#endif // SVGTRANSLATION_H
+#endif // SVGFILEIO_H
