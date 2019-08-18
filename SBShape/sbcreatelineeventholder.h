@@ -14,9 +14,9 @@ class SBSHAPESHARED_EXPORT SBCreateLineEventHolder : public SBCreateBaseEventHol
 {
 public:
     SBCreateLineEventHolder(SBICanvas *canvas);
-    void mouseDownEvent(QMouseEvent *e) override;
-    void mouseMoveEvent(QMouseEvent *e) override;
-    void mouseUpEvent(QMouseEvent *e) override;
+    void mouseDownEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mouseUpEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 };
 
 #endif // SBCREATELINEEVENTHOLDER_H

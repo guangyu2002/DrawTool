@@ -8,14 +8,17 @@
 #ifndef SBIFILEIO_H
 #define SBIFILEIO_H
 
+#include "sbshape_global.h"
+
 #include <QString>
 
-class SBIFileIO
+class SBDocument;
+class SBSHAPESHARED_EXPORT SBIFileIO
 {
 public:
     SBIFileIO();
-
-    virtual QString exportFile(const char *fileName) const = 0;
+    virtual QString fileType() = 0;
+    virtual QString exportFile(const char *fileName, const SBDocument *doc) const = 0;
 };
 
 #endif // SBIFILEIO_H

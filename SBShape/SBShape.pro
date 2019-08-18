@@ -33,6 +33,7 @@ SOURCES += \
         sbdocument.cpp \
         sbediteventholder.cpp \
         sbeventholder.cpp \
+        sbfileiomanager.cpp \
         sbicanvas.cpp \
         sbifileio.cpp \
         sbline.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
         sbdocument.h \
         sbediteventholder.h \
         sbeventholder.h \
+        sbfileiomanager.h \
         sbicanvas.h \
         sbifileio.h \
         sbline.h \

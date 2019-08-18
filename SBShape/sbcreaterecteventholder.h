@@ -14,8 +14,8 @@ class SBSHAPESHARED_EXPORT SBCreateRectEventHolder : public SBCreateBaseEventHol
 {
 public:
     SBCreateRectEventHolder(SBICanvas *canvas);
-    void mouseDownEvent(QMouseEvent *e) override;
-    void mouseMoveEvent(QMouseEvent *e) override;
+    void mouseDownEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
     void mouseUpEvent(QMouseEvent *e) override;
 };
 

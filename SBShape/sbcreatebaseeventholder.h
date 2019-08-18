@@ -15,7 +15,7 @@ class SBSHAPESHARED_EXPORT SBCreateBaseEventHolder : public SBEventHolder
 {
 public:
     SBCreateBaseEventHolder(SBICanvas *canvas);
-    void paintEvent(QPainter &, QPaintEvent *) override;
+    void paintEvent(QPainter &, QPaintEvent *) Q_DECL_OVERRIDE;
 protected:
     virtual void createEnd();
     SBShape *m_pShape;

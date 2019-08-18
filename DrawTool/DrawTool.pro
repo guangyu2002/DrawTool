@@ -42,16 +42,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/release/ -lSVGTranslation
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSVGTranslationd
-else:unix: LIBS += -L$$PWD/../build/debug/ -lSVGTranslation
-
-INCLUDEPATH += $$PWD/../SVGTranslation
-DEPENDPATH += $$PWD/../SVGTranslation
-
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build/release/ -lSBShape
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build/debug/ -lSBShaped
-else:unix: LIBS += -L$$PWD/../build/debug/ -lSBShape
+else:unix: LIBS += -L$$PWD/../build/ -lSBShape
 
 INCLUDEPATH += $$PWD/../SBShape
 DEPENDPATH += $$PWD/../SBShape

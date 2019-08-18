@@ -17,7 +17,7 @@ class SBSHAPESHARED_EXPORT SBRect : public SBSimpleShape
 public:
     SBRect();
 
-    void draw(QPainter &p) override;
+    void draw(QPainter &p) Q_DECL_OVERRIDE;
 
     inline const QPoint &begin() const { return m_dBegin; }
     inline void setBegin(const QPoint &pt) { m_dBegin = pt; }
@@ -27,8 +27,8 @@ public:
     void setWidth(const int width);
     int height() const;
     void setHeight(const int height);
-    QRect rectBox() const override;
-    QRect dispBox() const override;
+    QRect rectBox() const Q_DECL_OVERRIDE;
+    QRect dispBox() const Q_DECL_OVERRIDE;
 
 protected:
     QPoint m_dBegin;

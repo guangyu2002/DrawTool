@@ -1,5 +1,13 @@
-#include "svgtranslation.h"
+﻿#include "svgtranslation.h"
+#include <QXmlStreamWriter>
 
-SVGTranslation::SVGTranslation()
+#include "sbdocument.h"
+
+SVGFileIO::SVGFileIO()
 {
+}
+
+QString SVGFileIO::exportFile(const char *fileName, const SBDocument *doc) const
+{
+    return "";
 }
