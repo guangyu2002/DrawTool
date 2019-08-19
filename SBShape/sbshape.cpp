@@ -28,7 +28,8 @@ void SBShape::reDraw(QRect &rect)
     }
 }
 
-QString SBShape::typeName()
+QString SBShape::typeName() const
 {
     return "Shape";
 }
+

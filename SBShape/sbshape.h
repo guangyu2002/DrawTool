@@ -32,10 +32,16 @@ public:
     inline void setDocument(SBDocument *doc) { m_pDocument = doc; }
     inline SBICanvas *canvas() const { return m_pCanvas; }
     inline void setCanvas(SBICanvas *canvas) { m_pCanvas = canvas; }
+    inline int id() const { return m_did; }
+    inline void setId(int id) { m_did = id; }
+
+protected:
+    int m_did;
 
 private:
     SBICanvas *m_pCanvas;
     SBDocument *m_pDocument;
+
 };
 
 #endif // SBSHAPE_H

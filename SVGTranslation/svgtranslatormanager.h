@@ -8,13 +8,31 @@
 #ifndef SVGTRANSLATORMANAGER_H
 #define SVGTRANSLATORMANAGER_H
 
+#include <QString>
+
 class SBShape;
+class SBDocument;
+class QByteArray;
+class QXmlStreamWriter;
 class SVGTranslatorManager
 {
 public:
+    ~SVGTranslatorManager();
+    static SVGTranslatorManager &getInstance();
+    QString exportSvg(QByteArray &buff, SBDocument *doc);
+private:
     SVGTranslatorManager();
+    SVGTranslatorManager(const SVGTranslatorManager&) = delete;
+    SVGTranslatorManager& operator=(const SVGTranslatorManager&) = delete;
 
-    static void exportShape(SBShape *shape);
+    void exportShape(SBShape *shape);
+    void exportDefsNode();
+    void exportGRootNode(SBDocument *doc);
+    void exportGNode(const QString &id, SBDocument *doc);
+    void exportHeadClassNode(SBDocument *doc);
+
+private:
+    QXmlStreamWriter *m_pWriter;
 
 };
 

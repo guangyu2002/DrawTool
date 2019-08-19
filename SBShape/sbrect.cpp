@@ -44,10 +44,6 @@ QRect SBRect::dispBox() const
     return QRect(m_dBegin.x() - m_dStrokeWidth, m_dBegin.y() - m_dStrokeWidth, width() + m_dStrokeWidth * 2, height() + m_dStrokeWidth * 2);
 }
 
-QString SBRect::typeName()
-{
-    return "rect";
-}
 
 QRect SBRect::rectBox() const
 {

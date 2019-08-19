@@ -9,7 +9,7 @@
 SBFileIOManager &SBFileIOManager::getInstance()
 {
     static SBFileIOManager instance;
-    return instance;;
+    return instance;
 }
 
 SBFileIOManager::~SBFileIOManager()

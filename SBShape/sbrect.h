@@ -27,7 +27,7 @@ public:
 
     // SBShape interface
 public:
-    QString typeName() const Q_DECL_OVERRIDE;
+    inline QString typeName() const Q_DECL_OVERRIDE { return "rect"; }
     void draw(QPainter &p) Q_DECL_OVERRIDE;
     QRect rectBox() const Q_DECL_OVERRIDE;
     QRect dispBox() const Q_DECL_OVERRIDE;

@@ -27,12 +27,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         svgexportio.cpp \
         svgfileio.cpp \
+        svglinetranlation.cpp \
+        svgrecttranlation.cpp \
+        svgsimpleshapetranslation.cpp \
         svgtranlationbase.cpp \
         svgtranslatormanager.cpp
 
 HEADERS += \
         svgexportio.h \
         svgfileio.h \
+        svglinetranlation.h \
+        svgrecttranlation.h \
+        svgsimpleshapetranslation.h \
         svgtranlationbase.h \
         svgtranslation_global.h  \
         svgtranslatormanager.h
