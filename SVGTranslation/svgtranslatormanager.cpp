@@ -56,6 +56,7 @@ void SVGTranslatorManager::exportGNode(const QString &id, SBDocument *doc)
     for (int i = 0; i < count; ++i)
     {
         SVGTranlationBase base;
+        base.setPWriter(m_pWriter);
         base.exportShape(shapeList[i]);
     }
     m_pWriter->writeEndElement();

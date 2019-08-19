@@ -11,6 +11,7 @@
 #include <QString>
 
 class SBShape;
+class QXmlStreamWriter;
 class SVGTranlationBase
 {
 public:
@@ -18,6 +19,10 @@ public:
     virtual void exportShape(SBShape *shape);
 
     virtual QString typeName() const;
+    inline void setPWriter(QXmlStreamWriter *writer) { m_pWriter = writer; }
+
+private:
+    QXmlStreamWriter *m_pWriter;
 };
 
 #endif // SVGTRANLATIONBASE_H
