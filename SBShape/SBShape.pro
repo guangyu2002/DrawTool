@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        reflex.cpp \
         sbcanvas.cpp \
         sbcreatebaseeventholder.cpp \
         sbcreatelineeventholder.cpp \
@@ -39,11 +38,11 @@ SOURCES += \
         sbifileio.cpp \
         sbline.cpp \
         sbrect.cpp \
+        sbreflex.cpp \
         sbshape.cpp \
         sbsimpleshape.cpp
 
 HEADERS += \
-        reflex.h \
         sbcanvas.h \
         sbcreatebaseeventholder.h \
         sbcreatelineeventholder.h \
@@ -56,6 +55,7 @@ HEADERS += \
         sbifileio.h \
         sbline.h \
         sbrect.h \
+        sbreflex.h \
         sbshape.h \
         sbshape_global.h  \
         sbsimpleshape.h

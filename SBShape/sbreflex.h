@@ -5,8 +5,8 @@
  * 修改记录：
 ***********************************************/
 
-#ifndef REFLEX_H
-#define REFLEX_H
+#ifndef SBREFLEX_H
+#define SBREFLEX_H
 
 #include "sbshape_global.h"
 
@@ -100,7 +100,7 @@ private:
     QHash<QString, QList<QString>> m_dInheritHash;
 };
 //创建类实例工厂，单例模式
-//存在隐患，如果存在多个系的派生树，并且存在相同名称的子节点时，会出戏注册冲突
+//存在隐患，如果存在多个系的派生树，并且存在相同名称的子节点时，会出现注册冲突
 class SBSHAPESHARED_EXPORT ClassFactory
 {
 public:
@@ -119,4 +119,4 @@ private:
 
 };
 
-#endif // REFLEX_H
+#endif // SBREFLEX_H

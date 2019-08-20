@@ -13,5 +13,5 @@ public:
     void exportShape(SBShape *shape) Q_DECL_OVERRIDE;
     inline QString typeName() const Q_DECL_OVERRIDE { return "rect"; }
 };
-
+REGISTERCLASS(SVGRectTranlation, SVGSimpleShapeTranslation, SVGTranlationBase)
 #endif // SVGRECTTRANLATION_H

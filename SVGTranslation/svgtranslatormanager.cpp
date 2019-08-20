@@ -5,11 +5,46 @@
 #include <QXmlStreamWriter>
 
 #include "sbdocument.h"
+#include "sbshape.h"
 
 SVGTranslatorManager::SVGTranslatorManager() :
     m_pWriter()
 {
+    LoadSvgTranslation();
+}
 
+void SVGTranslatorManager::LoadSvgTranslation()
+{
+    Metadata* metadata = ClassFactory::getInstance().GetMetadata("SVGTranlationBase");
+    if (metadata != nullptr)
+    {
+        QHash<QString, ReflexObjectClass*>* reflexObjectClassHash = metadata->GetReflexObjects();
+        QHash<QString, ReflexObjectClass*>::iterator it = reflexObjectClassHash->begin();
+        while (it != reflexObjectClassHash->end())
+        {
+            SVGTranlationBase* tranlationBase = static_cast<SVGTranlationBase*>(metadata->CreateReflex(it.key()));
+            if (tranlationBase != nullptr)
+            {
+                m_dsvgTranslationBases.push_back(tranlationBase);
+            }
+            it++;
+        }
+    }
+}
+
+SVGTranlationBase *SVGTranslatorManager::findSVGTranslation(const QString &typeName) const
+{
+    QList<SVGTranlationBase*>::const_iterator it = m_dsvgTranslationBases.begin();
+    QList<SVGTranlationBase*>::const_iterator itEnd = m_dsvgTranslationBases.end();
+    while (it != itEnd)
+    {
+        if ((*it)->typeName() == typeName)
+        {
+            return *it;
+        }
+        it++;
+    }
+    return nullptr;
 }
 
 SVGTranslatorManager::~SVGTranslatorManager()
@@ -25,11 +60,6 @@ SVGTranslatorManager &SVGTranslatorManager::getInstance()
 {
     static SVGTranslatorManager instance;
     return instance;
-}
-
-void SVGTranslatorManager::exportShape(SBShape *shape)
-{
-
 }
 
 void SVGTranslatorManager::exportDefsNode()
@@ -55,9 +85,12 @@ void SVGTranslatorManager::exportGNode(const QString &id, SBDocument *doc)
     int count = shapeList.count();
     for (int i = 0; i < count; ++i)
     {
-        SVGTranlationBase base;
-        base.setPWriter(m_pWriter);
-        base.exportShape(shapeList[i]);
+        SVGTranlationBase *translationBase = findSVGTranslation(shapeList[i]->typeName());
+        if (translationBase != nullptr)
+        {
+            translationBase->setPWriter(m_pWriter);
+            translationBase->exportShape(shapeList[i]);
+        }
     }
     m_pWriter->writeEndElement();
 }

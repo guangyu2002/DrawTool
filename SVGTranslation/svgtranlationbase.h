@@ -10,6 +10,8 @@
 
 #include <QString>
 
+#include "sbreflex.h"
+
 class SBShape;
 class QXmlStreamWriter;
 class SVGTranlationBase

@@ -1,4 +1,4 @@
-﻿#include "reflex.h"
+﻿#include "sbreflex.h"
 
 #include <QString>
 
@@ -16,7 +16,7 @@ ClassFactory::ClassFactory()
 
 }
 
-Metadata * ClassFactory::GetMetadata(const QString &rootName)
+Metadata *ClassFactory::GetMetadata(const QString &rootName)
 {
     QList<Metadata*>::iterator itorBegin = m_dMetadataList.begin();
     QList<Metadata*>::iterator itorEnd = m_dMetadataList.end();

@@ -9,11 +9,13 @@
 #define SVGTRANSLATORMANAGER_H
 
 #include <QString>
+#include <QList>
 
 class SBShape;
 class SBDocument;
 class QByteArray;
 class QXmlStreamWriter;
+class SVGTranlationBase;
 class SVGTranslatorManager
 {
 public:
@@ -25,7 +27,8 @@ private:
     SVGTranslatorManager(const SVGTranslatorManager&) = delete;
     SVGTranslatorManager& operator=(const SVGTranslatorManager&) = delete;
 
-    void exportShape(SBShape *shape);
+    void LoadSvgTranslation();
+    SVGTranlationBase *findSVGTranslation(const QString& typeName) const;
     void exportDefsNode();
     void exportGRootNode(SBDocument *doc);
     void exportGNode(const QString &id, SBDocument *doc);
@@ -33,6 +36,7 @@ private:
 
 private:
     QXmlStreamWriter *m_pWriter;
+    QList<SVGTranlationBase*> m_dsvgTranslationBases;
 
 };
 
