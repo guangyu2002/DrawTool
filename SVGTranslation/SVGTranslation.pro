@@ -3,7 +3,6 @@
 # Project created by QtCreator 2019-08-16T15:21:13
 #
 #-------------------------------------------------
-QT       -= gui
 
 win32:CONFIG(release, debug|release): TARGET = SVGTranslation
 else:win32:CONFIG(debug, debug|release): TARGET = SVGTranslationd

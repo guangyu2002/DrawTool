@@ -3,7 +3,8 @@
 #include "sbicanvas.h"
 
 SBDocument::SBDocument() :
-    m_listShapes()
+    m_listShapes(),
+    m_dShapeMaxId(0)
 {
 
 }
@@ -27,4 +28,6 @@ void SBDocument::addShape(SBShape *shape)
     m_listShapes.push_back(shape);
     shape->setDocument(this);
     shape->setCanvas(m_pCanvas);
+    shape->setId(m_dShapeMaxId);
+    m_dShapeMaxId++;
 }

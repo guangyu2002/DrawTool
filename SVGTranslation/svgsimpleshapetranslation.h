@@ -20,6 +20,11 @@ public:
 public:
     void exportShape(SBShape *shape) Q_DECL_OVERRIDE;
     inline QString typeName() const Q_DECL_OVERRIDE { return "SimpleShape"; }
+
+    // SVGTranlationBase interface
+public:
+    void exportShapeAfter(SBShape *shape) Q_DECL_OVERRIDE;
+    void exportShapeBefore(SBShape *shape) Q_DECL_OVERRIDE;
 };
 REGISTERCLASS(SVGSimpleShapeTranslation, SVGTranlationBase, SVGTranlationBase)
 #endif // SVGSIMPLESHAPETRANSLATION_H

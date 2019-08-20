@@ -28,6 +28,7 @@ public:
 private:
     QList<SBShape*> m_listShapes;
     SBICanvas *m_pCanvas;
+    int m_dShapeMaxId;
 };
 
 #endif // SBDOCUMENT_H

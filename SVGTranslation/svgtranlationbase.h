@@ -19,11 +19,12 @@ class SVGTranlationBase
 public:
     SVGTranlationBase();
     virtual void exportShape(SBShape *shape);
-
     virtual QString typeName() const;
     inline void setPWriter(QXmlStreamWriter *writer) { m_pWriter = writer; }
-
-private:
+protected:
+    virtual void exportShapeAfter(SBShape *shape);
+    virtual void exportShapeBefore(SBShape *shape);
+protected:
     QXmlStreamWriter *m_pWriter;
 };
 
