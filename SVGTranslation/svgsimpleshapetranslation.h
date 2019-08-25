@@ -11,6 +11,7 @@
 
 #include "svgtranlationbase.h"
 
+class SBSimpleShape;
 class SVGSimpleShapeTranslation : public SVGTranlationBase
 {
 public:
@@ -18,13 +19,11 @@ public:
 
     // SVGTranlationBase interface
 public:
-    void exportShape(SBShape *shape) Q_DECL_OVERRIDE;
     inline QString typeName() const Q_DECL_OVERRIDE { return "SimpleShape"; }
 
-    // SVGTranlationBase interface
-public:
-    void exportShapeAfter(SBShape *shape) Q_DECL_OVERRIDE;
-    void exportShapeBefore(SBShape *shape) Q_DECL_OVERRIDE;
+protected:
+    void exportFillAndStroke(SBSimpleShape *simpleShape);
+
 };
-REGISTERCLASS(SVGSimpleShapeTranslation, SVGTranlationBase, SVGTranlationBase)
+REGISTERCLASS_ABSTRACT(SVGSimpleShapeTranslation, SVGTranlationBase, SVGTranlationBase)
 #endif // SVGSIMPLESHAPETRANSLATION_H

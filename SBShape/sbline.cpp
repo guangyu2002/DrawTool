@@ -2,17 +2,18 @@
 
 #include <QPainter>
 
-SBLine::SBLine()
+SBLine::SBLine() :
+    SBSimpleShape()
 {
-
+    m_dFillType = SBSimpleShape::FillType::NoneFillType;
 }
 
-void SBLine::draw(QPainter &p)
+void SBLine::draw(QPainter &painter)
 {
-    QPen pen(m_dPenColor);
-    pen.setWidth(m_dStrokeWidth);
-    p.setPen(pen);
-    p.drawLine(m_dBegin, m_dEnd);
+    QPen *p = pen();
+    painter.setPen(*p);
+    painter.drawLine(m_dBegin, m_dEnd);
+    delete p;
 }
 
 QRect SBLine::dispBox() const

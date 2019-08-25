@@ -1,21 +1,30 @@
 ﻿#include "svgsimpleshapetranslation.h"
 
+#include <QXmlStreamWriter>
+
+#include "sbsimpleshape.h"
+
 SVGSimpleShapeTranslation::SVGSimpleShapeTranslation()
 {
 
 }
 
-void SVGSimpleShapeTranslation::exportShape(SBShape *shape)
+void SVGSimpleShapeTranslation::exportFillAndStroke(SBSimpleShape *simpleShape)
 {
-    SVGTranlationBase::exportShape(shape);
+    SBSimpleShape::FillType fillType = simpleShape->fillType();
+    switch (fillType)
+    {
+    case SBSimpleShape::FillType::NoneFillType:
+        m_pWriter->writeAttribute("fill", "none");
+        break;
+    case SBSimpleShape::FillType::SolidFillType:
+        m_pWriter->writeAttribute("fill", simpleShape->brushColor().name());
+        break;
+    default:
+        break;
+    }
+    m_pWriter->writeAttribute("stroke", simpleShape->penColor().name());
+    m_pWriter->writeAttribute("stroke-width", QString::number(simpleShape->strokeWidth()));
+    m_pWriter->writeAttribute("stroke-opacity", QString::number(simpleShape->penColor().alpha() / 255.0));
 }
 
-void SVGSimpleShapeTranslation::exportShapeAfter(SBShape *shape)
-{
-    SVGTranlationBase::exportShapeAfter(shape);
-}
-
-void SVGSimpleShapeTranslation::exportShapeBefore(SBShape *shape)
-{
-    SVGTranlationBase::exportShapeBefore(shape);
-}

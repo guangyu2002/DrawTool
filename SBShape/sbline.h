@@ -16,9 +16,9 @@ class SBSHAPESHARED_EXPORT SBLine : public SBSimpleShape
 {
 public:
     SBLine();
-    inline QPoint Begin() const { return m_dBegin; }
+    inline QPoint begin() const { return m_dBegin; }
     inline void setBegin(const QPoint &begin) { m_dBegin = begin; }
-    inline QPoint End() const { return m_dEnd; }
+    inline QPoint end() const { return m_dEnd; }
     inline void setEnd(const QPoint &end) { m_dEnd = end; }
 
     // SBShape interface

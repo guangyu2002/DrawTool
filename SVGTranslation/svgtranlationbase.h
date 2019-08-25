@@ -18,12 +18,10 @@ class SVGTranlationBase
 {
 public:
     SVGTranlationBase();
-    virtual void exportShape(SBShape *shape);
-    virtual QString typeName() const;
+    virtual void exportShape(SBShape *shape) = 0;
+    virtual QString typeName() const = 0;
     inline void setPWriter(QXmlStreamWriter *writer) { m_pWriter = writer; }
-protected:
-    virtual void exportShapeAfter(SBShape *shape);
-    virtual void exportShapeBefore(SBShape *shape);
+
 protected:
     QXmlStreamWriter *m_pWriter;
 };

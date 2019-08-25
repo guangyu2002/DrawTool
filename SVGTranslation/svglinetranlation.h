@@ -3,6 +3,8 @@
 
 #include "svgsimpleshapetranslation.h"
 
+
+class SBLine;
 class SVGLineTranlation : public SVGSimpleShapeTranslation
 {
 public:
@@ -12,9 +14,8 @@ public:
 public:
     void exportShape(SBShape *shape) Q_DECL_OVERRIDE;
     inline QString typeName() const Q_DECL_OVERRIDE { return "line"; }
-protected:
-    void exportShapeAfter(SBShape *shape) Q_DECL_OVERRIDE;
-    void exportShapeBefore(SBShape *shape) Q_DECL_OVERRIDE;
+    void exportLine(SBLine *line);
+
 };
 REGISTERCLASS(SVGLineTranlation, SVGSimpleShapeTranslation, SVGTranlationBase)
 #endif // SVGLINETRANLATION_H

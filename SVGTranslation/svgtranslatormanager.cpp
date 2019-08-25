@@ -100,11 +100,11 @@ void SVGTranslatorManager::exportHeadClassNode(SBDocument *doc)
     m_pWriter->writeStartElement("g");
     m_pWriter->writeAttribute("id", "HeadClass");
     m_pWriter->writeStartElement("rect");
-    m_pWriter->writeAttribute("x","111");
-    m_pWriter->writeAttribute("y","111");
-    m_pWriter->writeAttribute("width","111");
-    m_pWriter->writeAttribute("height","111");
-    m_pWriter->writeAttribute("fill","#000000");
+    m_pWriter->writeAttribute("x", QString::number(doc->rect().x()));
+    m_pWriter->writeAttribute("y", QString::number(doc->rect().y()));
+    m_pWriter->writeAttribute("width", QString::number(doc->rect().width()));
+    m_pWriter->writeAttribute("height", QString::number(doc->rect().height()));
+    m_pWriter->writeAttribute("fill", doc->backColor().name());
     m_pWriter->writeEndElement();
     m_pWriter->writeEndElement();
 }
@@ -118,7 +118,11 @@ QString SVGTranslatorManager::exportSvg(QByteArray &buff, SBDocument *doc)
     m_pWriter = new QXmlStreamWriter(&buff);
     m_pWriter->setAutoFormatting(true);
     m_pWriter->writeStartDocument();
+    m_pWriter->writeDTD("<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"[]>");
     m_pWriter->writeStartElement("svg");
+    m_pWriter->writeAttribute("xmlns", "http://www.w3.org/2000/svg");
+    m_pWriter->writeAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    m_pWriter->writeAttribute("xmlns:cge", "http://iec.ch/TC57/2005/SVG-schema#");
     exportDefsNode();
     exportGRootNode(doc);
     m_pWriter->writeEndElement();

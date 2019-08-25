@@ -11,6 +11,7 @@
 #include "sbshape_global.h"
 
 #include <QList>
+#include <QColor>
 
 
 class SBShape;
@@ -24,11 +25,16 @@ public:
 
     inline QList<SBShape*> &shapeList() { return  m_listShapes; }
     inline void setCanvas(SBICanvas *canvas) { m_pCanvas = canvas; }
+    inline const QRect &rect() const { return m_dRect; }
+
+    inline const QColor &backColor() const { return m_dBackColor; }
 
 private:
     QList<SBShape*> m_listShapes;
     SBICanvas *m_pCanvas;
     int m_dShapeMaxId;
+    QRect m_dRect;
+    QColor m_dBackColor;
 };
 
 #endif // SBDOCUMENT_H

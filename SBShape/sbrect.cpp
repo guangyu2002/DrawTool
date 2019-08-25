@@ -1,19 +1,23 @@
 ﻿#include "sbrect.h"
 #include <QPainter>
 
-SBRect::SBRect() : SBSimpleShape()
+SBRect::SBRect() :
+    SBSimpleShape(),
+    m_dBegin(),
+    m_dEnd()
 {
 
 }
 
-void SBRect::draw(QPainter &p)
+void SBRect::draw(QPainter &painter)
 {
-    QBrush brush(m_dBrushColor);
-    p.fillRect(rectBox(), brush);
-    QPen pen(m_dPenColor);
-    pen.setWidth(m_dStrokeWidth);
-    p.setPen(pen);
-    p.drawRect(rectBox());
+    QBrush *b = brush();
+    painter.fillRect(rectBox(), *b);
+    QPen *p = pen();
+    painter.setPen(*p);
+    painter.drawRect(rectBox());
+    delete b;
+    delete p;
 }
 
 int SBRect::width() const

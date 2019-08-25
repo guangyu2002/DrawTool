@@ -4,7 +4,9 @@
 
 SBDocument::SBDocument() :
     m_listShapes(),
-    m_dShapeMaxId(0)
+    m_dShapeMaxId(0),
+    m_dRect(0,0,1000,1000),
+    m_dBackColor(Qt::black)
 {
 
 }
