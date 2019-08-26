@@ -123,6 +123,8 @@ QString SVGTranslatorManager::exportSvg(QByteArray &buff, SBDocument *doc)
     m_pWriter->writeAttribute("xmlns", "http://www.w3.org/2000/svg");
     m_pWriter->writeAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     m_pWriter->writeAttribute("xmlns:cge", "http://iec.ch/TC57/2005/SVG-schema#");
+    m_pWriter->writeAttribute("width", QString::number(doc->rect().width()));
+    m_pWriter->writeAttribute("height", QString::number(doc->rect().height()));
     exportDefsNode();
     exportGRootNode(doc);
     m_pWriter->writeEndElement();

@@ -4,17 +4,82 @@
 #include "sbdocument.h"
 
 #include <QPainter>
+#include <QScrollBar>
 
-SBCanvas::SBCanvas(QWidget *parent) :
+SBInternalCanvas::SBInternalCanvas(SBCanvas *canvas, QWidget *parent) :
     QWidget(parent),
-    m_dScaleGlobal_x(1),
-    m_dScaleGlobal_y(1)
+    m_dScaleGlobal(1),
+    m_pParentCanvas(canvas)
 {
     setMouseTracking(true);//开始鼠标move事件捕捉能力
     setFocusPolicy(Qt::StrongFocus);//开启键盘事件捕捉能力
+}
+
+void SBInternalCanvas::reDraw(const QRect &rect)
+{
+    update(rect.x()- m_pParentCanvas->horizontalScrollBar()->value(), rect.y()- m_pParentCanvas->verticalScrollBar()->value(), rect.width(), rect.height());
+}
+
+void SBInternalCanvas::mousePressEvent(QMouseEvent *event)
+{
+    m_pParentCanvas->eventHolder()->mouseDownEvent(event);
+}
+
+void SBInternalCanvas::mouseReleaseEvent(QMouseEvent *event)
+{
+    m_pParentCanvas->eventHolder()->mouseUpEvent(event);
+}
+
+void SBInternalCanvas::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    m_pParentCanvas->eventHolder()->mouseDoubleClickEvent(event);
+}
+
+void SBInternalCanvas::mouseMoveEvent(QMouseEvent *event)
+{
+    m_pParentCanvas->eventHolder()->mouseMoveEvent(event);
+}
+
+void SBInternalCanvas::keyPressEvent(QKeyEvent *event)
+{
+    m_pParentCanvas->eventHolder()->keyDownEvent(event);
+}
+
+void SBInternalCanvas::keyReleaseEvent(QKeyEvent *event)
+{
+    m_pParentCanvas->eventHolder()->keyUpEvent(event);
+}
+/**********************************************
+ * 创建时间：2019.08.06
+ * 作者：guangyu
+ * 说明：画布绘制函数，先进行文档图元绘制，再进行事件处理器中的绘制部分
+ * 修改记录：
+***********************************************/
+void SBInternalCanvas::paintEvent(QPaintEvent *event)
+{
+    QPainter p(this);
+    p.setRenderHints(QPainter::Antialiasing);//反走样抗锯齿
+    p.scale(m_dScaleGlobal, m_dScaleGlobal);//画布全局缩放
+    //p.translate(x, y);//画布全局移动
+    QList<SBShape*>::iterator itor = m_pParentCanvas->doc()->shapeList().begin();
+    QList<SBShape*>::iterator itorEnd = m_pParentCanvas->doc()->shapeList().end();
+    while (itor != itorEnd)
+    {
+        (*itor)->draw(p);
+        itor++;
+    }
+    m_pParentCanvas->eventHolder()->paintEvent(p, event);
+}
+
+SBCanvas::SBCanvas(QWidget *parent) :
+    QScrollArea(parent)
+{
     m_pEventHolder = new SBEditEventHolder(this);
     m_pSBDocument = new SBDocument();
     m_pSBDocument->setCanvas(this);
+    m_pInternalCanvas = new SBInternalCanvas(this);
+    m_pInternalCanvas->setMinimumSize(m_pSBDocument->rect().size());
+    scrollAreaInit();
 }
 
 SBCanvas::~SBCanvas()
@@ -46,53 +111,24 @@ void SBCanvas::eventHolderEnd()
     setEventHolder(eventHolder);
 }
 
-void SBCanvas::mousePressEvent(QMouseEvent *event)
+void SBCanvas::reDraw(const QRect &rect)
 {
-    m_pEventHolder->mouseDownEvent(event);
+    m_pInternalCanvas->reDraw(rect);
 }
 
-void SBCanvas::mouseReleaseEvent(QMouseEvent *event)
+void SBCanvas::setCanvasScale(double scale)
 {
-    m_pEventHolder->mouseUpEvent(event);
+    m_pInternalCanvas->m_dScaleGlobal = scale;
 }
 
-void SBCanvas::mouseDoubleClickEvent(QMouseEvent *event)
+double SBCanvas::canvasScale()
 {
-    m_pEventHolder->mouseDoubleClickEvent(event);
+    return m_pInternalCanvas->m_dScaleGlobal;
 }
 
-void SBCanvas::mouseMoveEvent(QMouseEvent *event)
+void SBCanvas::scrollAreaInit()
 {
-    m_pEventHolder->mouseMoveEvent(event);
-}
-
-void SBCanvas::keyPressEvent(QKeyEvent *event)
-{
-    m_pEventHolder->keyDownEvent(event);
-}
-
-void SBCanvas::keyReleaseEvent(QKeyEvent *event)
-{
-    m_pEventHolder->keyUpEvent(event);
-}
-/**********************************************
- * 创建时间：2019.08.06
- * 作者：guangyu
- * 说明：画布绘制函数，先进行文档图元绘制，再进行事件处理器中的绘制部分
- * 修改记录：
-***********************************************/
-void SBCanvas::paintEvent(QPaintEvent *event)
-{
-    QPainter p(this);
-    p.setRenderHints(QPainter::Antialiasing);//反走样抗锯齿
-    p.scale(m_dScaleGlobal_x, m_dScaleGlobal_y);//画布全局缩放
-    //p.translate(x, y);//画布全局移动
-    QList<SBShape*>::iterator itor = m_pSBDocument->shapeList().begin();
-    QList<SBShape*>::iterator itorEnd = m_pSBDocument->shapeList().end();
-    while (itor != itorEnd)
-    {
-        (*itor)->draw(p);
-        itor++;
-    }
-    m_pEventHolder->paintEvent(p, event);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    setWidgetResizable(true);
+    setWidget(m_pInternalCanvas);
 }
