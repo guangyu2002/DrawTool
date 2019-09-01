@@ -17,7 +17,9 @@ void SBRect::draw(QPainter &painter)
     painter.setPen(*p);
     painter.drawRect(rectBox());
     delete b;
+    b = nullptr;
     delete p;
+    p = nullptr;
 }
 
 int SBRect::width() const
@@ -32,7 +34,7 @@ void SBRect::setWidth(const int width)
 
 int SBRect::height() const
 {
-    return  m_dEnd.y() - m_dBegin.y();
+    return m_dEnd.y() - m_dBegin.y();
 }
 
 void SBRect::setHeight(const int height)
@@ -40,16 +42,16 @@ void SBRect::setHeight(const int height)
     m_dEnd.setY(m_dBegin.y() + height);
 }
 /*********************************************************************
- * 元件刷新区域，元件实际的绘制区域是rectBox的基础上加上膨胀值m_dStrokeWidth / 2
- * 此处使用膨胀值m_dStrokeWidth，是为了在创建矩形时鼠标移动不会造成矩形边缘闪烁
+ * 元件刷新区域，元件实际的绘制区域是rectBox的基础上加上膨胀值m_dStrokeWidth
 *********************************************************************/
 QRect SBRect::dispBox() const
 {
-    return QRect(m_dBegin.x() - m_dStrokeWidth, m_dBegin.y() - m_dStrokeWidth, width() + m_dStrokeWidth * 2, height() + m_dStrokeWidth * 2);
+    int w = m_dStrokeWidth / 2;
+    return QRect(m_dBegin.x() - w, m_dBegin.y() - w, width() + m_dStrokeWidth, height() + m_dStrokeWidth);
 }
 
 
 QRect SBRect::rectBox() const
 {
-    return QRect(m_dBegin, m_dEnd);
+    return QRect(m_dBegin.x(), m_dBegin.y(), m_dEnd.x() - m_dBegin.x(), m_dEnd.y() - m_dBegin.y());
 }

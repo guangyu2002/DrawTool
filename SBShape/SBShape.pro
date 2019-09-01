@@ -40,6 +40,7 @@ SOURCES += \
         sbrect.cpp \
         sbreflex.cpp \
         sbshape.cpp \
+        sbshapetools.cpp \
         sbsimpleshape.cpp
 
 HEADERS += \
@@ -58,6 +59,7 @@ HEADERS += \
         sbreflex.h \
         sbshape.h \
         sbshape_global.h  \
+        sbshapetools.h \
         sbsimpleshape.h
 
 unix {

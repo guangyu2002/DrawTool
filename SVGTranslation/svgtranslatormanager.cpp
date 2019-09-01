@@ -6,6 +6,7 @@
 
 #include "sbdocument.h"
 #include "sbshape.h"
+#include "sbshapetools.h"
 
 SVGTranslatorManager::SVGTranslatorManager() :
     m_pWriter()
@@ -99,11 +100,12 @@ void SVGTranslatorManager::exportHeadClassNode(SBDocument *doc)
 {
     m_pWriter->writeStartElement("g");
     m_pWriter->writeAttribute("id", "HeadClass");
+    QRect allShapeRect = SBShapeTools::getInstance().allShapeRect(doc->shapeList());
     m_pWriter->writeStartElement("rect");
-    m_pWriter->writeAttribute("x", QString::number(doc->rect().x()));
-    m_pWriter->writeAttribute("y", QString::number(doc->rect().y()));
-    m_pWriter->writeAttribute("width", QString::number(doc->rect().width()));
-    m_pWriter->writeAttribute("height", QString::number(doc->rect().height()));
+    m_pWriter->writeAttribute("x", QString::number(allShapeRect.x()));
+    m_pWriter->writeAttribute("y", QString::number(allShapeRect.y()));
+    m_pWriter->writeAttribute("width", QString::number(allShapeRect.width()));
+    m_pWriter->writeAttribute("height", QString::number(allShapeRect.height()));
     m_pWriter->writeAttribute("fill", doc->backColor().name());
     m_pWriter->writeEndElement();
     m_pWriter->writeEndElement();
@@ -125,6 +127,8 @@ QString SVGTranslatorManager::exportSvg(QByteArray &buff, SBDocument *doc)
     m_pWriter->writeAttribute("xmlns:cge", "http://iec.ch/TC57/2005/SVG-schema#");
     m_pWriter->writeAttribute("width", QString::number(doc->rect().width()));
     m_pWriter->writeAttribute("height", QString::number(doc->rect().height()));
+    QRect allShapeRect = SBShapeTools::getInstance().allShapeRect(doc->shapeList());
+    m_pWriter->writeAttribute("viewBox",QString("%1 %2 %3 %4").arg(allShapeRect.x()).arg(allShapeRect.y()).arg(allShapeRect.width()).arg(allShapeRect.height()));
     exportDefsNode();
     exportGRootNode(doc);
     m_pWriter->writeEndElement();

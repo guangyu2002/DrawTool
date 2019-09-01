@@ -14,14 +14,16 @@ void SBLine::draw(QPainter &painter)
     painter.setPen(*p);
     painter.drawLine(m_dBegin, m_dEnd);
     delete p;
+    p = nullptr;
 }
 
 QRect SBLine::dispBox() const
 {
-    return QRect(m_dBegin.x() - m_dStrokeWidth, m_dBegin.y() - m_dStrokeWidth, m_dEnd.x() - m_dBegin.x() + m_dStrokeWidth * 2, m_dEnd.y() - m_dBegin.y() + m_dStrokeWidth * 2);
+    int w = m_dStrokeWidth / 2;
+    return QRect(m_dBegin.x() - w, m_dBegin.y() - w, m_dEnd.x() - m_dBegin.x() + m_dStrokeWidth, m_dEnd.y() - m_dBegin.y() + m_dStrokeWidth);
 }
 
 QRect SBLine::rectBox() const
 {
-    return QRect(m_dBegin, m_dEnd);
+    return QRect(m_dBegin.x(), m_dBegin.y(), m_dEnd.x() - m_dBegin.x(), m_dEnd.y() - m_dBegin.y());
 }
