@@ -22,11 +22,10 @@ public:
     SBDocument();
     ~SBDocument();
     void addShape(SBShape *shape);
-
+    SBShape *pickShape(const QPoint &pt) const;
     inline QList<SBShape*> &shapeList() { return  m_listShapes; }
     inline void setCanvas(SBICanvas *canvas) { m_pCanvas = canvas; }
     inline const QRect &rect() const { return m_dRect; }
-
     inline const QColor &backColor() const { return m_dBackColor; }
 
 private:

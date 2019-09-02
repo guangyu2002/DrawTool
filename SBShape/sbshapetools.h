@@ -19,7 +19,7 @@ class SBSHAPESHARED_EXPORT SBShapeTools
 public:
     static SBShapeTools &getInstance();
 
-    QRect allShapeRect(const QList<SBShape*> &listShapes) const;
+    QRect allShapeDispBox(const QList<SBShape*> &listShapes) const;
 private:
     SBShapeTools();
     SBShapeTools(const SBShapeTools &sbShapeTools) = delete;

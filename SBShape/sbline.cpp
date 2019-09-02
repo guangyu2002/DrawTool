@@ -23,6 +23,16 @@ QRect SBLine::dispBox() const
     return QRect(m_dBegin.x() - w, m_dBegin.y() - w, m_dEnd.x() - m_dBegin.x() + m_dStrokeWidth, m_dEnd.y() - m_dBegin.y() + m_dStrokeWidth);
 }
 
+void SBLine::setPositon(const QPoint &pos)
+{
+
+}
+
+bool SBLine::pick(const QPoint &pos) const
+{
+    return false;
+}
+
 QRect SBLine::rectBox() const
 {
     return QRect(m_dBegin.x(), m_dBegin.y(), m_dEnd.x() - m_dBegin.x(), m_dEnd.y() - m_dBegin.y());

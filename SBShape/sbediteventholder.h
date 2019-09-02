@@ -10,6 +10,9 @@
 
 #include "sbeventholder.h"
 
+#include <QList>
+
+class SBShape;
 class SBSHAPESHARED_EXPORT SBEditEventHolder : public SBEventHolder
 {
 public:
@@ -21,6 +24,9 @@ public:
     void keyDownEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
     void keyUpEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
     void paintEvent(QPainter &, QPaintEvent *e) Q_DECL_OVERRIDE;
+
+protected:
+    QList<SBShape*> m_dSelectedShapes;
 };
 
 #endif // SBEDITEVENTHOLDER_H

@@ -33,3 +33,16 @@ void SBDocument::addShape(SBShape *shape)
     shape->setId(m_dShapeMaxId);
     m_dShapeMaxId++;
 }
+
+SBShape *SBDocument::pickShape(const QPoint &pt) const
+{
+    int count = m_listShapes.count();
+    for (int i = 0; i < count; ++i)
+    {
+        if (m_listShapes[i]->pick(pt))
+        {
+            return m_listShapes[i];
+        }
+    }
+    return nullptr;
+}

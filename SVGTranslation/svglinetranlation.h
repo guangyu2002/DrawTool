@@ -1,4 +1,11 @@
-﻿#ifndef SVGLINETRANLATION_H
+﻿/**********************************************
+ * 创建时间：2019.08.06
+ * 作者：guangyu
+ * 说明：直线图元svg转换类
+ * 修改记录：
+***********************************************/
+
+#ifndef SVGLINETRANLATION_H
 #define SVGLINETRANLATION_H
 
 #include "svgsimpleshapetranslation.h"

@@ -50,6 +50,18 @@ QRect SBRect::dispBox() const
     return QRect(m_dBegin.x() - w, m_dBegin.y() - w, width() + m_dStrokeWidth, height() + m_dStrokeWidth);
 }
 
+void SBRect::setPositon(const QPoint &pos)
+{
+    QPoint pt = pos - m_dBegin;
+    setBegin(pos);
+    setEnd(pt + m_dEnd);
+}
+
+bool SBRect::pick(const QPoint &pos) const
+{
+    return rectBox().contains(pos);
+}
+
 
 QRect SBRect::rectBox() const
 {

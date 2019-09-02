@@ -13,6 +13,7 @@
 #include <QString>
 
 class QRect;
+class QPoint;
 class QPainter;
 class SBICanvas;
 class SBDocument;
@@ -27,6 +28,8 @@ public:
     virtual void reDraw(QRect &rect);
     virtual QRect rectBox() const = 0;
     virtual QRect dispBox() const = 0;
+    virtual void setPositon(const QPoint &pos) = 0;
+    virtual bool pick(const QPoint &pos) const = 0;
     virtual QString typeName() const;
     inline SBDocument *document() const { return m_pDocument; }
     inline void setDocument(SBDocument *doc) { m_pDocument = doc; }

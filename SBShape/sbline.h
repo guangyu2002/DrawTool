@@ -27,12 +27,12 @@ public:
     void draw(QPainter &p) Q_DECL_OVERRIDE;
     QRect rectBox() const Q_DECL_OVERRIDE;
     QRect dispBox() const Q_DECL_OVERRIDE;
+    void setPositon(const QPoint &pos) Q_DECL_OVERRIDE;
+    bool pick(const QPoint &pos) const Q_DECL_OVERRIDE;
 
 private:
     QPoint m_dBegin;
     QPoint m_dEnd;
-
-
 };
 
 #endif // SBLINE_H

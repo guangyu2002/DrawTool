@@ -7,15 +7,15 @@ SBShapeTools &SBShapeTools::getInstance()
     return instance;
 }
 
-QRect SBShapeTools::allShapeRect(const QList<SBShape*> &listShapes) const
+QRect SBShapeTools::allShapeDispBox(const QList<SBShape*> &listShapes) const
 {
-    QRect allRect;
+    QRect allDispBpx;
     int count = listShapes.count();
     for (int i = 0; i < count; ++i)
     {
-        allRect = allRect.united(listShapes[i]->rectBox());
+        allDispBpx = allDispBpx.united(listShapes[i]->dispBox());
     }
-    return allRect;
+    return allDispBpx;
 }
 
 SBShapeTools::SBShapeTools()

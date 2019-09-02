@@ -31,6 +31,8 @@ public:
     void draw(QPainter &p) Q_DECL_OVERRIDE;
     QRect rectBox() const Q_DECL_OVERRIDE;
     QRect dispBox() const Q_DECL_OVERRIDE;
+    void setPositon(const QPoint &pos) Q_DECL_OVERRIDE;
+    bool pick(const QPoint &pos) const Q_DECL_OVERRIDE;
 
 protected:
     QPoint m_dBegin;
